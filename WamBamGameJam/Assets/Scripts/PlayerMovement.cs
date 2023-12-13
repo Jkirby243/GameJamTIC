@@ -53,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         if(isGrounded && velocity.y < 0)
         {
-            velocity.y = 0f;
+            velocity.y = -3f;
         }
 
         if (Input.GetButton("Fire1") && DWS.ActiveGun != null)
