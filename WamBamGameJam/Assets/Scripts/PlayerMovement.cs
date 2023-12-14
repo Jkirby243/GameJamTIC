@@ -36,10 +36,16 @@ public class PlayerMovement : MonoBehaviour
     private SpecialMoves SM;
 
     public float dashspeed;
+    private bool dash;
+    private Vector3 dashend;
+    private Vector3 dashstart;
+    private float timetaken;
+    public float duration;
 
     // Start is called before the first frame update
     void Start()
     {
+        dash = false;
         Cursor.lockState = CursorLockMode.Locked;
         obj_ = GetComponent<GameObject>();
         rb = GetComponent<Rigidbody>();
@@ -55,6 +61,10 @@ public class PlayerMovement : MonoBehaviour
         //{
         //    slide = false;
         //}
+        if (dash)
+        {
+            return;
+        }
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         if(isGrounded && velocity.y < 0)
         {
@@ -110,48 +120,79 @@ public class PlayerMovement : MonoBehaviour
             transform.localRotation = Quaternion.Euler(camturn.y * Vector3.up);
         //}
         ////////
-
-        //Player movement
-        //Vars that make stuff easier to read and cause brakeys did in the tutorial and its become habit for me
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-
-        Vector3 move = transform.right * x + transform.forward * z;
-
-        //if (Input.GetButton("Sprint"))
+        //if (dash)
         //{
-        //    controller.Move(move * Sprintspeed * Time.deltaTime);
-        //    cam.fieldOfView = 70;
-        //    Debug.Log("sprinting");
-        //}
-        //else if(Input.GetButton("Crouch"))
-        //{
-        //    cam.transform.localPosition = Vector3.up * 0.735f;
-        //    Vector3 slide = (transform.forward * Sprintspeed) + (transform.right * x * .1f);
-        //    //cam.transform.localPosition = Vector3.up * -0.4f;
-        //    controller.Move(slide * Time.deltaTime);
+        //    float t = timetaken / duration;
+        //    transform.position = Vector3.Lerp(dashstart, dashend, t);
+        //    timetaken += Time.deltaTime;
+        //    if (timetaken > duration)
+        //    {
+        //        timetaken = 0;
+        //        controller.enabled = true;
+        //        dash = false;
+        //    }
         //}
         //else
         //{
+            //Player movement
+            //Vars that make stuff easier to read and cause brakeys did in the tutorial and its become habit for me
+            float x = Input.GetAxis("Horizontal");
+            float z = Input.GetAxis("Vertical");
+
+            Vector3 move = transform.right * x + transform.forward * z;
+
+            //if (Input.GetButton("Sprint"))
+            //{
+            //    controller.Move(move * Sprintspeed * Time.deltaTime);
+            //    cam.fieldOfView = 70;
+            //    Debug.Log("sprinting");
+            //}
+            //else if(Input.GetButton("Crouch"))
+            //{
+            //    cam.transform.localPosition = Vector3.up * 0.735f;
+            //    Vector3 slide = (transform.forward * Sprintspeed) + (transform.right * x * .1f);
+            //    //cam.transform.localPosition = Vector3.up * -0.4f;
+            //    controller.Move(slide * Time.deltaTime);
+            //}
+            //else
+            //{
             controller.Move(move * speed * Time.deltaTime);
             cam.fieldOfView = 60;
-        //}
+            //}
 
-        if(Input.GetButtonDown("Jump") && isGrounded)
-        {
-            Debug.Log("Jump");
-            velocity.y += Mathf.Sqrt(jumpHeight * -2f * Gravity);
-        }
-        if (SM.sword)
-        {
-            if (Input.GetButtonDown("Dash"))
+            if (Input.GetButtonDown("Jump") && isGrounded)
             {
-                Debug.Log("DASH!");
-                controller.Move(move * dashspeed);
+                Debug.Log("Jump");
+                velocity.y += Mathf.Sqrt(jumpHeight * -2f * Gravity);
             }
-        }
+            if (SM.sword)
+            {
+                if (Input.GetButtonDown("Dash"))
+                {
+                    Debug.Log("DASH!");
+                    controller.enabled = false;
+                //dashstart = transform.position;
+                //dashend = move * dashspeed + transform.position;
+                    StartCoroutine(SwordDash(x,z));
+                    dash = true;
+                    Debug.DrawRay(transform.position, dashend, Color.red, 5f);
+                    dash = true;
+                    //controller.Move(move * dashspeed);
+                }
+            }
 
-        velocity.y += Gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
+            velocity.y += Gravity * Time.deltaTime;
+            controller.Move(velocity * Time.deltaTime);
+        //}
+    }
+
+    private IEnumerator SwordDash(float x, float z)
+    {
+
+        rb.velocity = (transform.right * x + transform.forward * z) * dashspeed;
+
+        yield return new WaitForSeconds(duration);
+        dash = false;
+        controller.enabled = true;
     }
 }
