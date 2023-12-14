@@ -46,10 +46,10 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonUp("Crouch"))
-        {
-            slide = false;
-        }
+        //if (Input.GetButtonUp("Crouch"))
+        //{
+        //    slide = false;
+        //}
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         if(isGrounded && velocity.y < 0)
         {
@@ -66,44 +66,44 @@ public class PlayerMovement : MonoBehaviour
         camturn.y += Input.GetAxisRaw("Mouse X");
         //This makes it so y doesnt go exponential
         
-        if(camturn.y > 360f && Input.GetButton("Crouch") == false)
-        {
-            camturn.y -= 360f;
-        }
-        if(camturn.y < -360)
-        {
-            camturn.y += 360;
-        }
+        //if(camturn.y > 360f && Input.GetButton("Crouch") == false)
+        //{
+        //    camturn.y -= 360f;
+        //}
+        //if(camturn.y < -360)
+        //{
+        //    camturn.y += 360;
+        //}
         camturn.x = Mathf.Clamp(camturn.x, -75, 75);
         
-        if (Input.GetButton("Crouch") == false)
-        {
-            cam.transform.eulerAngles = new Vector3(camturn.x, camturn.y, 0);
-            transform.localRotation = Quaternion.Euler(camturn.y * Vector3.up);
-        }
-        else
-        {
-            Debug.Log("Cam.y: " + camturn.y);
+        //if (Input.GetButton("Crouch") == false)
+        //{
+        //    cam.transform.eulerAngles = new Vector3(camturn.x, camturn.y, 0);
+        //    transform.localRotation = Quaternion.Euler(camturn.y * Vector3.up);
+        //}
+        //else
+        //{
+            //Debug.Log("Cam.y: " + camturn.y);
 
-            if (!slide)
-            {
-                turnboundsR = camturn.y + 60;
-                turnboundsL = camturn.y - 60;
-                slide = true;
-            }
+            //if (!slide)
+            //{
+            //    turnboundsR = camturn.y + 60;
+            //    turnboundsL = camturn.y - 60;
+            //    slide = true;
+            //}
 
-            camturn.x = Mathf.Clamp(camturn.x, -75, 75);
-            camturn.y = Mathf.Clamp(camturn.y, turnboundsL, turnboundsR);
-            cam.transform.eulerAngles = new Vector3(camturn.x, camturn.y, 0);
-            Debug.Log("crouching");
-        }
-        if (Input.GetButtonUp("Crouch"))
-        {
-            camturn.y += Input.GetAxisRaw("Mouse X");
-            camturn.x = Mathf.Clamp(camturn.x, -75, 75);
-            cam.transform.eulerAngles = new Vector3(camturn.x, camturn.y, 0);
-            transform.localRotation = Quaternion.Euler(camturn.y * Vector3.up);
-        }
+            //camturn.x = Mathf.Clamp(camturn.x, -75, 75);
+            //camturn.y = Mathf.Clamp(camturn.y, turnboundsL, turnboundsR);
+            //cam.transform.eulerAngles = new Vector3(camturn.x, camturn.y, 0);
+            //Debug.Log("crouching");
+        //}
+        //if (Input.GetButtonUp("Crouch"))
+        //{
+        //    camturn.y += Input.GetAxisRaw("Mouse X");
+        //    camturn.x = Mathf.Clamp(camturn.x, -75, 75);
+        //    cam.transform.eulerAngles = new Vector3(camturn.x, camturn.y, 0);
+        //    transform.localRotation = Quaternion.Euler(camturn.y * Vector3.up);
+        //}
         ////////
 
         //Player movement
@@ -119,13 +119,13 @@ public class PlayerMovement : MonoBehaviour
             cam.fieldOfView = 70;
             Debug.Log("sprinting");
         }
-        else if(Input.GetButton("Crouch"))
-        {
-            cam.transform.localPosition = Vector3.up * 0.735f;
-            Vector3 slide = (transform.forward * Sprintspeed) + (transform.right * x * .1f);
-            //cam.transform.localPosition = Vector3.up * -0.4f;
-            controller.Move(slide * Time.deltaTime);
-        }
+        //else if(Input.GetButton("Crouch"))
+        //{
+        //    cam.transform.localPosition = Vector3.up * 0.735f;
+        //    Vector3 slide = (transform.forward * Sprintspeed) + (transform.right * x * .1f);
+        //    //cam.transform.localPosition = Vector3.up * -0.4f;
+        //    controller.Move(slide * Time.deltaTime);
+        //}
         else
         {
             controller.Move(move * speed * Time.deltaTime);

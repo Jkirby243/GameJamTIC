@@ -69,7 +69,7 @@ public class Enemy : MonoBehaviour
         if (melee)
         {
             Debug.DrawRay(transform.position, transform.forward * 1.5f, Color.red,.01f);
-            if (Physics.Raycast(transform.position, (Player.transform.position - transform.position), out RaycastHit hit, 1.5f))
+            if (Physics.Raycast(transform.position, (Player.transform.position - transform.position), out RaycastHit hit, 1f))
             {
                 if (hit.transform.tag == "Player")
                 {
@@ -79,11 +79,10 @@ public class Enemy : MonoBehaviour
                 }
                 if (!shooting)
                 {
-                    shooting = true;
+                    
                     StartCoroutine(wait());
-
+                    shooting = true;
                     //shoottimer = Time.time;
-
                     //finish animation
 
                 }
@@ -102,8 +101,9 @@ public class Enemy : MonoBehaviour
     {
         Debug.Log("Call wait");
         yield return new WaitForSeconds(1);
-        
-        if (Vector3.Distance(transform.position, Player.transform.position) <= 1.5)
+
+        Debug.Log(Vector3.Distance(transform.position, Player.transform.position));
+        if (Vector3.Distance(transform.position, Player.transform.position) <= 1.5f)
         {
             Debug.Log("DealDamage");
             Player.GetComponent<PlayerHealth>().DealDamage(10);
