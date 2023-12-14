@@ -35,7 +35,7 @@ public class Gun : ScriptableObject
         ammocount = Maxammo;
         Model = Instantiate(ModelPrefab);
         Model.transform.SetParent(Parent, false);
-        Model.transform.localPosition = SpawnPoint;
+        Model.transform.position = Patpos.position;
         Model.transform.localRotation = Quaternion.Euler(SpawnRotation);
         hitdamage = damage;
     }

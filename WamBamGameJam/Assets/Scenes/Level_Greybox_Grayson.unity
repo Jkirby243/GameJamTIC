@@ -387,7 +387,7 @@ GameObject:
   - component: {fileID: 34888965}
   - component: {fileID: 34888964}
   - component: {fileID: 34888963}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -773,7 +773,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 40260866}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1574,7 +1574,7 @@ GameObject:
   - component: {fileID: 217253356}
   - component: {fileID: 217253355}
   - component: {fileID: 217253354}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Plane (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2744,6 +2744,7 @@ GameObject:
   m_Component:
   - component: {fileID: 283178605}
   - component: {fileID: 283178606}
+  - component: {fileID: 283178607}
   m_Layer: 0
   m_Name: Point Light (1)
   m_TagString: Untagged
@@ -2828,6 +2829,26 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &283178607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283178604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1 &308605648
 GameObject:
   m_ObjectHideFlags: 0
@@ -2925,7 +2946,7 @@ GameObject:
   - component: {fileID: 326135720}
   - component: {fileID: 326135719}
   - component: {fileID: 326135718}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cube (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3410,7 +3431,7 @@ GameObject:
   - component: {fileID: 340228416}
   - component: {fileID: 340228415}
   - component: {fileID: 340228414}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cube (24)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3604,7 +3625,7 @@ GameObject:
   - component: {fileID: 350657268}
   - component: {fileID: 350657267}
   - component: {fileID: 350657266}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cube (82)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3701,7 +3722,7 @@ GameObject:
   - component: {fileID: 354144956}
   - component: {fileID: 354144955}
   - component: {fileID: 354144954}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cube (31)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3798,7 +3819,7 @@ GameObject:
   - component: {fileID: 356411103}
   - component: {fileID: 356411102}
   - component: {fileID: 356411101}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cube (79)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4509,7 +4530,7 @@ GameObject:
   - component: {fileID: 453092570}
   - component: {fileID: 453092569}
   - component: {fileID: 453092568}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cube (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5220,6 +5241,7 @@ GameObject:
   m_Component:
   - component: {fileID: 543416489}
   - component: {fileID: 543416490}
+  - component: {fileID: 543416491}
   m_Layer: 0
   m_Name: Point Light (4)
   m_TagString: Untagged
@@ -5304,6 +5326,26 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &543416491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543416488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1 &565197542
 GameObject:
   m_ObjectHideFlags: 0
@@ -5413,7 +5455,7 @@ GameObject:
   - component: {fileID: 568110914}
   - component: {fileID: 568110913}
   - component: {fileID: 568110912}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cube (26)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6090,6 +6132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 682130889}
   - component: {fileID: 682130890}
+  - component: {fileID: 682130891}
   m_Layer: 0
   m_Name: Point Light (5)
   m_TagString: Untagged
@@ -6174,6 +6217,26 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &682130891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682130888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1 &698332449
 GameObject:
   m_ObjectHideFlags: 0
@@ -6747,7 +6810,7 @@ GameObject:
   - component: {fileID: 791788963}
   - component: {fileID: 791788962}
   - component: {fileID: 791788961}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cube (76)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7075,7 +7138,7 @@ GameObject:
   - component: {fileID: 825752910}
   - component: {fileID: 825752909}
   - component: {fileID: 825752908}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cube (48)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7754,7 +7817,7 @@ GameObject:
   - component: {fileID: 1011730082}
   - component: {fileID: 1011730081}
   - component: {fileID: 1011730080}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cube (28)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8140,6 +8203,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1053600918}
   - component: {fileID: 1053600919}
+  - component: {fileID: 1053600920}
   m_Layer: 0
   m_Name: Point Light (9)
   m_TagString: Untagged
@@ -8224,6 +8288,26 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1053600920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053600917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1 &1061364631
 GameObject:
   m_ObjectHideFlags: 0
@@ -9141,6 +9225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1160150584}
   - component: {fileID: 1160150585}
+  - component: {fileID: 1160150586}
   m_Layer: 0
   m_Name: Point Light (7)
   m_TagString: Untagged
@@ -9225,6 +9310,26 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1160150586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160150583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1 &1181496348
 GameObject:
   m_ObjectHideFlags: 0
@@ -9237,7 +9342,7 @@ GameObject:
   - component: {fileID: 1181496352}
   - component: {fileID: 1181496351}
   - component: {fileID: 1181496350}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cube (23)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10263,7 +10368,7 @@ GameObject:
   - component: {fileID: 1399715638}
   - component: {fileID: 1399715637}
   - component: {fileID: 1399715636}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Plane (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10650,6 +10755,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1447228758}
   - component: {fileID: 1447228759}
+  - component: {fileID: 1447228760}
   m_Layer: 0
   m_Name: Point Light (3)
   m_TagString: Untagged
@@ -10734,6 +10840,26 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1447228760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1447228757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1 &1453410316
 GameObject:
   m_ObjectHideFlags: 0
@@ -10746,7 +10872,7 @@ GameObject:
   - component: {fileID: 1453410320}
   - component: {fileID: 1453410319}
   - component: {fileID: 1453410318}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cube (82)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10978,7 +11104,7 @@ GameObject:
   - component: {fileID: 1498204003}
   - component: {fileID: 1498204002}
   - component: {fileID: 1498204001}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cube (50)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11172,7 +11298,7 @@ GameObject:
   - component: {fileID: 1548168942}
   - component: {fileID: 1548168941}
   - component: {fileID: 1548168940}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cube (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13541,7 +13667,7 @@ GameObject:
   - component: {fileID: 1868461474}
   - component: {fileID: 1868461473}
   - component: {fileID: 1868461472}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cube (82)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13735,7 +13861,7 @@ GameObject:
   - component: {fileID: 1890721835}
   - component: {fileID: 1890721834}
   - component: {fileID: 1890721833}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Plane (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14798,6 +14924,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1963076322}
   - component: {fileID: 1963076321}
+  - component: {fileID: 1963076323}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -14882,6 +15009,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1963076323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963076320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1 &1990734845
 GameObject:
   m_ObjectHideFlags: 0
@@ -15377,6 +15524,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2007909593}
   - component: {fileID: 2007909592}
+  - component: {fileID: 2007909594}
   m_Layer: 0
   m_Name: Point Light
   m_TagString: Untagged
@@ -15461,6 +15609,26 @@ Transform:
   m_Father: {fileID: 2040134212}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2007909594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007909591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1 &2018992604
 GameObject:
   m_ObjectHideFlags: 0
@@ -15473,7 +15641,7 @@ GameObject:
   - component: {fileID: 2018992608}
   - component: {fileID: 2018992607}
   - component: {fileID: 2018992606}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (27)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15706,6 +15874,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2040413119}
   - component: {fileID: 2040413120}
+  - component: {fileID: 2040413121}
   m_Layer: 0
   m_Name: Point Light (8)
   m_TagString: Untagged
@@ -15790,6 +15959,26 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &2040413121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040413118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1 &2044549047
 GameObject:
   m_ObjectHideFlags: 0
@@ -16129,6 +16318,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2068681457}
   - component: {fileID: 2068681458}
+  - component: {fileID: 2068681459}
   m_Layer: 0
   m_Name: Point Light (2)
   m_TagString: Untagged
@@ -16213,6 +16403,26 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &2068681459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068681456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1 &2079591106
 GameObject:
   m_ObjectHideFlags: 0
@@ -16322,7 +16532,7 @@ GameObject:
   - component: {fileID: 2107476608}
   - component: {fileID: 2107476607}
   - component: {fileID: 2107476606}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cube (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
