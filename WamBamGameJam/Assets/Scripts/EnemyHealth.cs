@@ -31,4 +31,15 @@ public class EnemyHealth : MonoBehaviour
         Debug.Log("Damage is " + damage.ToString() + " value is " + numb.GetComponent<Number>().value.ToString());
         numb.GetComponent<Number>().text.text = damage.ToString();
     }
+
+    public void HeadShot(int damage, Vector3 pos)
+    {
+        Debug.Log("deadling headshot+");
+        float headdamage = (float)damage * 2.5f;
+        health -= Mathf.RoundToInt(headdamage);
+        GameObject numb = Instantiate(DamageNumber, pos, Quaternion.identity);
+        numb.GetComponent<Number>().value = Mathf.RoundToInt(headdamage);
+        Debug.Log("Damage is " + Mathf.RoundToInt(headdamage).ToString() + " value is " + numb.GetComponent<Number>().value.ToString());
+        numb.GetComponent<Number>().text.text = Mathf.RoundToInt(headdamage).ToString();
+    }
 }

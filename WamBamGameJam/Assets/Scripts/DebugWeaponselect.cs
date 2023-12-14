@@ -39,7 +39,7 @@ public class DebugWeaponselect : MonoBehaviour
         if (Input.GetKeyDown("1"))
         {
             ActiveGun.Despawn(); //despawns
-            DestroyImmediate(ActiveGun, true); //removes model everything
+            //DestroyImmediate(ActiveGun, true); //removes model everything
             Gun gun = Guns.Find(gun => gun.Name == Weapon.Pistol); //finds a gun in the list of game that has the same as the given name
             ActiveGun = gun;
             gun.Spawn(WeaponParent, PartPos,this); //just model and part positions
@@ -47,7 +47,7 @@ public class DebugWeaponselect : MonoBehaviour
         if (Input.GetKeyDown("2"))
         {
             ActiveGun.Despawn();
-            DestroyImmediate(ActiveGun, true);
+            //DestroyImmediate(ActiveGun, true);
             Gun gun = Guns.Find(gun => gun.Name == Weapon.Revolver);
             ActiveGun = gun;
             gun.Spawn(WeaponParent, PartPos ,this);

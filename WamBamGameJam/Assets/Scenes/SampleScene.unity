@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 244c8b66fe2574b409e1dedc14efa1c7, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 0465449357a062f448a679840cfe5330, type: 2}
 --- !u!1 &162088368
 GameObject:
   m_ObjectHideFlags: 0
@@ -1429,10 +1429,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d77fd08940dfc174480fcbc91a997d4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weaponname: 0
+  Weaponname: 1
   WeaponParent: {fileID: 963194228}
   Guns:
-  - {fileID: 11400000, guid: c3d004744a7094843a8923e0dbb20ab0, type: 2}
+  - {fileID: 11400000, guid: 17c5bc11566469e488a75409cdd7e1f8, type: 2}
   PartPos: {fileID: 162088369}
   ActiveGun: {fileID: 0}
 --- !u!114 &1284462539

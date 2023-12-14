@@ -103,6 +103,12 @@ public class Gun : ScriptableObject
                     Debug.Log("Enemy Shot!");
                     hit.collider.gameObject.GetComponent<EnemyHealth>().DealDamage(hitdamage, hit.point);
                 }
+                if(hit.transform.tag == "Head")
+                {
+                    Debug.Log("HEADSHOT! hitdamage =" + hitdamage + " ppoint = " + hit.point);
+
+                    hit.collider.gameObject.GetComponentInParent<EnemyHealth>().HeadShot(hitdamage, hit.point);
+                }
             }
             else
             {
