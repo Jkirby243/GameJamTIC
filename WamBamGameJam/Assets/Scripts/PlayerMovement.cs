@@ -33,6 +33,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private DebugWeaponselect DWS;
 
+    private SpecialMoves SM;
+
+    public float dashspeed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         cam = Camera.main;
         controller = GetComponent<CharacterController>();
+        SM = GetComponent<SpecialMoves>();
     }
 
     // Update is called once per frame
@@ -136,6 +141,14 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log("Jump");
             velocity.y += Mathf.Sqrt(jumpHeight * -2f * Gravity);
+        }
+        if (SM.sword)
+        {
+            if (Input.GetButtonDown("Dash"))
+            {
+                Debug.Log("DASH!");
+                controller.Move(move * dashspeed);
+            }
         }
 
         velocity.y += Gravity * Time.deltaTime;
