@@ -99,10 +99,10 @@ public class PlayerMovement : MonoBehaviour
         //}
         //if (Input.GetButtonUp("Crouch"))
         //{
-        //    camturn.y += Input.GetAxisRaw("Mouse X");
-        //    camturn.x = Mathf.Clamp(camturn.x, -75, 75);
-        //    cam.transform.eulerAngles = new Vector3(camturn.x, camturn.y, 0);
-        //    transform.localRotation = Quaternion.Euler(camturn.y * Vector3.up);
+            camturn.y += Input.GetAxisRaw("Mouse X");
+            camturn.x = Mathf.Clamp(camturn.x, -75, 75);
+            cam.transform.eulerAngles = new Vector3(camturn.x, camturn.y, 0);
+            transform.localRotation = Quaternion.Euler(camturn.y * Vector3.up);
         //}
         ////////
 
@@ -113,12 +113,12 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 move = transform.right * x + transform.forward * z;
 
-        if (Input.GetButton("Sprint"))
-        {
-            controller.Move(move * Sprintspeed * Time.deltaTime);
-            cam.fieldOfView = 70;
-            Debug.Log("sprinting");
-        }
+        //if (Input.GetButton("Sprint"))
+        //{
+        //    controller.Move(move * Sprintspeed * Time.deltaTime);
+        //    cam.fieldOfView = 70;
+        //    Debug.Log("sprinting");
+        //}
         //else if(Input.GetButton("Crouch"))
         //{
         //    cam.transform.localPosition = Vector3.up * 0.735f;
@@ -126,11 +126,11 @@ public class PlayerMovement : MonoBehaviour
         //    //cam.transform.localPosition = Vector3.up * -0.4f;
         //    controller.Move(slide * Time.deltaTime);
         //}
-        else
-        {
+        //else
+        //{
             controller.Move(move * speed * Time.deltaTime);
             cam.fieldOfView = 60;
-        }
+        //}
 
         if(Input.GetButtonDown("Jump") && isGrounded)
         {
