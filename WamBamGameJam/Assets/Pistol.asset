@@ -16,7 +16,7 @@ MonoBehaviour:
   Maxammo: 0
   SpawnPoint: {x: 0, y: 0, z: 0}
   SpawnRotation: {x: 0, y: 0, z: 0}
-  ModelPrefab: {fileID: 0}
+  ModelPrefab: {fileID: 615730495878513886, guid: a7d204e309e49e6419e737a19587138b, type: 3}
   reloadCount: 0
   damage: 0
   BulletEffects: {fileID: 0}
