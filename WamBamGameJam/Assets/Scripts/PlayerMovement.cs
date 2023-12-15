@@ -74,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButton("Fire1") && weaponsManager.ActiveGun != null)
         {
-            print("Fire button has been hit AND there is an activeGun");
+            //print("Fire button has been hit AND there is an activeGun");
             weaponsManager.ActiveGun.Fire();
         }
 

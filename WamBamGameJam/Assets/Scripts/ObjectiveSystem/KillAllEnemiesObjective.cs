@@ -10,8 +10,15 @@ public class KillAllEnemiesObjective : Objective
     [Tooltip("If MustKillAllEnemies is false, this is the amount of enemy kills required")]
     public int KillsToCompleteObjective = 1;
 
+    public int _totalMaxEnemies = 6; 
+
     private int _killTotal;
-    private int _totalEnemies = 1; 
+
+    [Space]
+    [Header("Enemy Spawn Attributes Associated with This Objective")]
+    public bool randomizeEnemies;
+    public bool enemiesPreSpawned;
+    public bool continuousSpawning;
 
     protected override void Start()
     {
@@ -19,7 +26,7 @@ public class KillAllEnemiesObjective : Objective
         if (string.IsNullOrEmpty(title))
             title = "Eliminate " + (mustKillAllEnemies ? "all the" : KillsToCompleteObjective.ToString()) +
                     " enemies";
-        TestEnemyScript.OnEnemyKilled += HandleEnemyKilled;
+        Enemy.OnEnemyKilled += HandleEnemyKilled;
         //We would subscribe to the events in each invidual objective scripts here
         /*Enemy.OnEnemyKilled += HandleEnemyKilled; 
          * 
@@ -29,12 +36,19 @@ public class KillAllEnemiesObjective : Objective
     private void HandleEnemyKilled()
     {
         _killTotal++;
-        print(_killTotal + " == " + _totalEnemies);
-        if (_killTotal == _totalEnemies)
+        //print(_killTotal + " == " + _totalMaxEnemies);
+        if (_killTotal == _totalMaxEnemies)
         {
             //Complete Objective
-            print("Killed all enemies!");
+            //print("Killed all enemies!");
             CompleteObjective();
         }
+    }
+
+    protected override void ChangeEnemySpawnBehavior(bool randomize, bool enemiesPreSpawn, bool continousSpawn)
+    {
+        base.ChangeEnemySpawnBehavior(randomizeEnemies, enemiesPreSpawned, continuousSpawning);
+
+
     }
 }

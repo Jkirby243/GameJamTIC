@@ -62,22 +62,37 @@ public class EnemySpawner : MonoBehaviour
             {
                 for(int j = 0; j < maxEnemyCount; j++)
                 {
-                    for (int i = 0; i < enemySpawnPoints.Length; i++)
+                    if(currentEnemyCount >= maxEnemyCount)
                     {
-                        currentEnemyCount++;
-                        randomVal = Random.Range(0, enemyPrefab.Length);
-                        Instantiate(enemyPrefab[randomVal], enemySpawnPoints[i].position, Quaternion.identity);
+                        break; 
+                    }
+                    else
+                    {
+                        for (int i = 0; i < enemySpawnPoints.Length; i++)
+                        {
+                            currentEnemyCount++;
+                            randomVal = Random.Range(0, enemyPrefab.Length);
+                            Instantiate(enemyPrefab[randomVal], enemySpawnPoints[i].position, Quaternion.identity);
+                        }
                     }
                 }
+
             }
             else
             {
                 for (int j = 0; j < maxEnemyCount; j++)
                 {
-                   for (int i = 0; i < enemySpawnPoints.Length; i++)
+                    if (currentEnemyCount >= maxEnemyCount)
                     {
-                        currentEnemyCount++;
-                        Instantiate(enemyPrefab[0], enemySpawnPoints[i].position, Quaternion.identity);
+                        break;
+                    }
+                    else
+                    {
+                        for (int i = 0; i < enemySpawnPoints.Length; i++)
+                        {
+                            currentEnemyCount++;
+                            Instantiate(enemyPrefab[0], enemySpawnPoints[i].position, Quaternion.identity);
+                        }
                     }
                 }
             }
@@ -112,11 +127,11 @@ public class EnemySpawner : MonoBehaviour
                     currentEnemyCount++;
                     randomVal = Random.Range(0, enemyPrefab.Length);
                     Instantiate(enemyPrefab[randomVal], enemySpawnPoints[i].position, Quaternion.identity);
-                     
+                    yield return new WaitForSeconds(spawnRate);
                 }
             }
             
-            yield return new WaitForSeconds(spawnRate);
+            
         }
         else
         {
@@ -130,10 +145,18 @@ public class EnemySpawner : MonoBehaviour
                 {
                     currentEnemyCount++;
                     Instantiate(enemyPrefab[0], enemySpawnPoints[i].position, Quaternion.identity);
+                    yield return new WaitForSeconds(spawnRate);
                 }
             }
-            yield return new WaitForSeconds(spawnRate);
+            
         }
 
+    }
+
+    public void ChangeSpawnerBehavior(bool randomize, bool enemiesPreSpawn, bool continousSpawn)
+    {
+        randomEnemy = randomize;
+        enemiesInstantiated = enemiesPreSpawn;
+        continuouslySpawningEnemies = continousSpawn;
     }
 }

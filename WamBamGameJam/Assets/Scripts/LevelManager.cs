@@ -13,15 +13,16 @@ public class LevelManager : MonoBehaviour
     [SerializeField] GameObject fadeImage;
     [SerializeField] GameObject enemySpawnerManager;
     [SerializeField] GameObject countDownText; 
-    [SerializeField] int countDown = 3; 
+    [SerializeField] int countDown = 3;
+    [SerializeField] private ObjectiveManager objectiveM; 
 
     // Start is called before the first frame update
     void Start()
     {
         player.transform.position = subwayTransform.position;
         player.transform.rotation = Quaternion.identity;
-        StartCoroutine(Fade("In")); //this should be moved to the level manager
-        
+        StartCoroutine(Fade("In", "subway")); //this should be moved to the level manager
+        //objectiveM.CreateNewObjective();
     }
 
     // Update is called once per frame
@@ -30,15 +31,29 @@ public class LevelManager : MonoBehaviour
         
     }
 
-    public void StartFadeCoroutine(string value)
+    public void StartFadeCoroutine(string value, string area)
     {
-        StartCoroutine(Fade(value));
+        StartCoroutine(Fade(value, area));
     }
 
-    public IEnumerator Fade(string value)
+    public IEnumerator Fade(string value, string nextArea)
     {
-        if (value == "In")
+        if (value == "In" && nextArea.Contains("level"))
         {
+            
+            player.GetComponent<CharacterController>().enabled = true;
+            var anim = fadeImage.GetComponent<Animator>();
+            anim.SetTrigger("FadeIn");
+            yield return new WaitForSeconds(1f);
+            var image = fadeImage.GetComponent<Image>();
+            Color currentColor = image.color;
+            currentColor.a = 0;
+            fadeImage.GetComponent<Image>().color = currentColor;
+            
+        }
+        else if(value == "In" && nextArea.Contains("subway"))
+        {
+            objectiveM.CreateNewObjective();
             player.GetComponent<CharacterController>().enabled = true;
             var anim = fadeImage.GetComponent<Animator>();
             anim.SetTrigger("FadeIn");
@@ -58,31 +73,42 @@ public class LevelManager : MonoBehaviour
             Color currentColor = image.color;
             currentColor.a = 255;
             fadeImage.GetComponent<Image>().color = currentColor;
-           
-            StartCoroutine(LevelSetUp());
+            StartCoroutine(AreaSetUp(nextArea));
         }
     }
 
-    IEnumerator LevelSetUp()
+    IEnumerator AreaSetUp(string area)
     {
-        int count = countDown;
-        countDownText.SetActive(true);
-        countDownText.GetComponent<TextMeshProUGUI>().SetText(countDown.ToString());
-        yield return new WaitForSeconds(1f);
+        print("area: " + area);
 
-        for(int i = countDown - 1; i >= 0; i--)
+        if (area.Contains("level"))
         {
-            count = i + 1;
-            countDownText.GetComponent<TextMeshProUGUI>().SetText(count.ToString());
+            fadeImage.GetComponent<Image>().color = Color.black;
+            int count = countDown;
+            countDownText.SetActive(true);
+            countDownText.GetComponent<TextMeshProUGUI>().SetText(countDown.ToString());
             yield return new WaitForSeconds(1f);
+
+            for (int i = countDown - 1; i >= 0; i--)
+            {
+                count = i + 1;
+                countDownText.GetComponent<TextMeshProUGUI>().SetText(count.ToString());
+                yield return new WaitForSeconds(1f);
+            }
+
+            countDownText.GetComponent<TextMeshProUGUI>().SetText("Go!");
+            yield return new WaitForSeconds(1f);
+            enemySpawnerManager.SetActive(true);
+            countDownText.SetActive(false);
+            player.transform.position = levelTransform.position;
+            StartCoroutine(Fade("In", "level"));
         }
 
-        countDownText.GetComponent<TextMeshProUGUI>().SetText("Go!");
-        yield return new WaitForSeconds(1f);
-        enemySpawnerManager.SetActive(true);
-        countDownText.SetActive(false);
-        player.transform.position = levelTransform.position;
-        StartCoroutine(Fade("In"));
-
+        else
+        {
+            enemySpawnerManager.SetActive(false);
+            player.transform.position = subwayTransform.position;
+            StartCoroutine(Fade("In", "subway"));
+        }
     }
 }

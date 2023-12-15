@@ -22,12 +22,19 @@ public abstract class Objective : MonoBehaviour
     public static event Action<Objective> OnObjectiveCreated; 
     public static event Action<Objective> OnObjectiveCompleted;
 
+    public static event Action onObjectiveCompleted;
+
+    private EnemySpawner enemySpawner; 
 
     protected virtual void Start()
     {
         OnObjectiveCreated?.Invoke(this);
         //display title and objective here?
-
+        enemySpawner = FindObjectOfType<EnemySpawner>();
+        if(enemySpawner == null)
+        {
+            Debug.LogError("ERROR: UNABLE TO FIND ENEMY SPAWNER");
+        }
     }
 
     public void GrabUIElements(TextMeshProUGUI objectiveTitleText, TextMeshProUGUI objectiveDescriptionText)
@@ -48,6 +55,13 @@ public abstract class Objective : MonoBehaviour
     {
         titleText.SetText(title + ": Complete");
         descriptionText.SetText("");
+        isCompleted = true;
+        onObjectiveCompleted.Invoke();
+    }
+
+    protected virtual void ChangeEnemySpawnBehavior(bool randomize, bool enemiesPreSpawn, bool continousSpawn)
+    {
+        enemySpawner.ChangeSpawnerBehavior(randomize, enemiesPreSpawn, continousSpawn);
     }
 
 }

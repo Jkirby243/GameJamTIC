@@ -286,6 +286,7 @@ GameObject:
   - component: {fileID: 5134129841408854770}
   - component: {fileID: 5134129841408854781}
   - component: {fileID: 9014918645758091523}
+  - component: {fileID: 4802516368774145812}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -451,6 +452,20 @@ MonoBehaviour:
   revolver: 0
   sword: 0
   headshots: 0
+--- !u!114 &4802516368774145812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5134129841408854783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 932c801c691d4a844a5894e3cce72c2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  maxhealth: 100
 --- !u!1 &5134129841454744394
 GameObject:
   m_ObjectHideFlags: 0

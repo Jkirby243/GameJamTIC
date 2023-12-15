@@ -146,6 +146,8 @@ MonoBehaviour:
   Firepoint: {fileID: 6230317240091405069}
   bullet: {fileID: 1406469248922978240, guid: 73ae75b28b2afd440b189244f10785d3, type: 3}
   melee: 1
+  health: 56
+  DamageNumber: {fileID: 7855816281202853309, guid: 4b9b5fa1c7445a5458d09e6c1ebc4998, type: 3}
 --- !u!114 &6230317239467479252
 MonoBehaviour:
   m_ObjectHideFlags: 0

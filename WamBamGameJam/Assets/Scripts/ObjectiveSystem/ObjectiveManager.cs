@@ -11,7 +11,7 @@ public class ObjectiveManager : MonoBehaviour
     public Objective activeObjective; 
     private int randomVal;
 
-    public TextMeshProUGUI objectiveTitleText, objectiveDescriptionText; 
+    public TextMeshProUGUI objectiveTitleText, objectiveDescriptionText;
 
     private void Start()
     {
@@ -21,8 +21,8 @@ public class ObjectiveManager : MonoBehaviour
          * CapturePoint.OnPointCapured += HandlePointcaptured
          * 
          */
-        CreateNewObjective();
-
+        //CreateNewObjective();
+        
     }
 
     public void CreateNewObjective()

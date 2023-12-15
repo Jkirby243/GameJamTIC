@@ -174,11 +174,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6230317239467479253, guid: aef9f83d0421bb440b2fb03a2f409e61, type: 3}
       propertyPath: melee
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6230317239467479253, guid: aef9f83d0421bb440b2fb03a2f409e61, type: 3}
       propertyPath: speed
-      value: 0
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6230317239467479253, guid: aef9f83d0421bb440b2fb03a2f409e61, type: 3}
+      propertyPath: health
+      value: 56
       objectReference: {fileID: 0}
     - target: {fileID: 6230317239467479253, guid: aef9f83d0421bb440b2fb03a2f409e61, type: 3}
       propertyPath: shootingtime

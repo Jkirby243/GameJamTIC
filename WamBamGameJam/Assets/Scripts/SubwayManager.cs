@@ -47,50 +47,6 @@ public class SubwayManager : MonoBehaviour
         }
     }
 
-    //IEnumerator Fade(string value)
-    //{
-    //    if(value == "In")
-    //    {
-    //        _player.GetComponent<CharacterController>().enabled = true;
-    //        var anim = fadeImage.GetComponent<Animator>();
-    //        anim.SetTrigger("FadeIn");
-    //        yield return new WaitForSeconds(1f);
-    //        var image =  fadeImage.GetComponent<Image>();
-    //        Color currentColor = image.color;
-    //        currentColor.a = 0;
-    //        fadeImage.GetComponent<Image>().color = currentColor;
-    //    }
-    //    else
-    //    {
-            
-    //        var anim = fadeImage.GetComponent<Animator>();
-    //        anim.SetTrigger("FadeOut");
-    //        yield return new WaitForSeconds(1f);
-    //        var image = fadeImage.GetComponent<Image>();
-    //        Color currentColor = image.color;
-    //        currentColor.a = 255;
-    //        fadeImage.GetComponent<Image>().color = currentColor;
-    //    }
-    //}
-
-    //[SerializeField] private float subwayCountDownTimer;
-    //[SerializeField] private float loadingTime = 60f;
-    //[SerializeField] private TextMeshProUGUI countDownText; 
-
-    //[SerializeField] private GameObject entryDoor;
-    //[SerializeField] private GameObject exitDoor;
-
-    //[SerializeField] private SubwayExitTrigger exitTrigger;
-
-    //private bool endOfTimer; 
-
-    //// Start is called before the first frame update
-    //void Start()
-    //{
-    //    subwayCountDownTimer = loadingTime;
-
-    //}
-
     // Update is called once per frame
     void Update()
     {
@@ -98,10 +54,8 @@ public class SubwayManager : MonoBehaviour
         if (playerReady && Input.GetKeyDown(KeyCode.E))
         {
             instructionsText.SetActive(false);
-            levelManager.StartFadeCoroutine("Out");
+            levelManager.StartFadeCoroutine("Out", "level");
+            playerReady = false; 
         }
-
-
-
     }
 }
