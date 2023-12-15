@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour
     public LayerMask mask;
     public GameObject Firepoint;
     public GameObject bullet;
+    public GameObject numbersPosition; 
     public bool melee;
 
     public int health;
@@ -63,6 +64,7 @@ public class Enemy : MonoBehaviour
 
                     shoottimer = Time.time;
                     Instantiate(bullet, Firepoint.transform.position, transform.rotation);
+                    print("Bullet Fired");
 
                 }
             }
@@ -106,10 +108,10 @@ public class Enemy : MonoBehaviour
     public void DealDamage(int damage, Vector3 pos)
     {
         health -= damage;
-        GameObject numb = Instantiate(DamageNumber, pos, Quaternion.identity);
-        numb.GetComponent<Number>().value = damage;
+        GameObject numb = Instantiate(DamageNumber, pos, Quaternion.identity, numbersPosition.transform);
+        numb.GetComponentInChildren<Number>().value = damage;
         //Debug.Log("Damage is " + damage.ToString() + " value is " + numb.GetComponent<Number>().value.ToString());
-        numb.GetComponent<Number>().text.text = damage.ToString();
+        numb.GetComponentInChildren<Number>().text.text = damage.ToString();
         if(health<= 0)
         {
             Death();

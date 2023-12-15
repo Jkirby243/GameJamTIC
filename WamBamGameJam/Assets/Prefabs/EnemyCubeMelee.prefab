@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6212766053188187428
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1620295548804193472}
+  m_Layer: 0
+  m_Name: NumbersPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1620295548804193472
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6212766053188187428}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0.577, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6230317239467479262}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &6230317239467479255
 GameObject:
   m_ObjectHideFlags: 0
@@ -35,6 +66,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6230317240091405066}
+  - {fileID: 1620295548804193472}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -145,6 +177,7 @@ MonoBehaviour:
     m_Bits: 128
   Firepoint: {fileID: 6230317240091405069}
   bullet: {fileID: 1406469248922978240, guid: 73ae75b28b2afd440b189244f10785d3, type: 3}
+  numbersPosition: {fileID: 0}
   melee: 1
   health: 56
   DamageNumber: {fileID: 7855816281202853309, guid: 4b9b5fa1c7445a5458d09e6c1ebc4998, type: 3}
@@ -161,7 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 56
-  DamageNumber: {fileID: 7855816281202853309, guid: 4b9b5fa1c7445a5458d09e6c1ebc4998, type: 3}
+  DamageNumber: {fileID: 6430550785669951567, guid: c210048e54839ac43a1724530719f912, type: 3}
 --- !u!1 &6230317240091405069
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,7 +22,7 @@ public abstract class Objective : MonoBehaviour
     public static event Action<Objective> OnObjectiveCreated; 
     public static event Action<Objective> OnObjectiveCompleted;
 
-    public static event Action onObjectiveCompleted;
+    public static event Action onObjectiveCompleted; 
 
     private EnemySpawner enemySpawner; 
 
@@ -30,7 +30,7 @@ public abstract class Objective : MonoBehaviour
     {
         OnObjectiveCreated?.Invoke(this);
         //display title and objective here?
-        enemySpawner = FindObjectOfType<EnemySpawner>();
+        enemySpawner = FindObjectOfType<EnemySpawner>(true);
         if(enemySpawner == null)
         {
             Debug.LogError("ERROR: UNABLE TO FIND ENEMY SPAWNER");

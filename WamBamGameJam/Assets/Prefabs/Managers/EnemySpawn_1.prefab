@@ -83,7 +83,9 @@ MonoBehaviour:
   - {fileID: 621241895159957979, guid: 2c4e9e7a96457f047928d8db4aa9fe64, type: 3}
   - {fileID: 3497240218652420224, guid: e4de7a231e1d35f44a380eebfbff24fc, type: 3}
   levelStartWaitTime: 5
-  spawnRate: 10
+  spawnRate: 5
+  maxEnemyCount: 12
+  currentEnemyCount: 0
   randomEnemy: 1
   enemiesInstantiated: 0
   continuouslySpawningEnemies: 1

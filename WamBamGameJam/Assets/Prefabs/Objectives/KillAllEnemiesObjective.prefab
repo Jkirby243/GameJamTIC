@@ -52,3 +52,7 @@ MonoBehaviour:
   descriptionText: {fileID: 0}
   mustKillAllEnemies: 1
   KillsToCompleteObjective: 5
+  _totalMaxEnemies: 12
+  randomizeEnemies: 1
+  enemiesPreSpawned: 1
+  continuousSpawning: 0

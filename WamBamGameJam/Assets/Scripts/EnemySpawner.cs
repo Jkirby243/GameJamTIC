@@ -48,7 +48,7 @@ public class EnemySpawner : MonoBehaviour
         canSpawn = false;
         spawnTimer = levelStartWaitTime;
         enemySpawnPoints = new Transform[transform.childCount];
-
+        currentEnemyCount = 0; 
         int children = transform.childCount;
         enemySpawnPoints = new Transform[children];
         for(int i = 0; i < children; i++)
@@ -105,6 +105,7 @@ public class EnemySpawner : MonoBehaviour
         spawnTimer -= Time.deltaTime; 
         if(spawnTimer <= 0 && continuouslySpawningEnemies)
         {
+            print("In spawnTimer <= 0 && continouslySpawningEnemies");
             StartCoroutine(Spawner());
             spawnTimer = spawnRate; 
 ;       }
@@ -117,17 +118,27 @@ public class EnemySpawner : MonoBehaviour
             
             for(int i = 0; i < enemySpawnPoints.Length; i++)
             {
-                if(currentEnemyCount >= maxEnemyCount)
-                {
-                    print("Reached Max Enemy Count");
-                    break;
-                }
-                else
+                if(continuouslySpawningEnemies)
                 {
                     currentEnemyCount++;
                     randomVal = Random.Range(0, enemyPrefab.Length);
                     Instantiate(enemyPrefab[randomVal], enemySpawnPoints[i].position, Quaternion.identity);
                     yield return new WaitForSeconds(spawnRate);
+                }
+                else
+                {
+                    if (currentEnemyCount >= maxEnemyCount)
+                    {
+                        print("Reached Max Enemy Count");
+                        break;
+                    }
+                    else
+                    {
+                        currentEnemyCount++;
+                        randomVal = Random.Range(0, enemyPrefab.Length);
+                        Instantiate(enemyPrefab[randomVal], enemySpawnPoints[i].position, Quaternion.identity);
+                        yield return new WaitForSeconds(spawnRate);
+                    }
                 }
             }
             
@@ -137,16 +148,27 @@ public class EnemySpawner : MonoBehaviour
         {
             for (int i = 0; i < enemySpawnPoints.Length; i++)
             {
-                if (currentEnemyCount >= maxEnemyCount)
-                {
-                    break;
-                }
-                else
+
+                if (continuouslySpawningEnemies)
                 {
                     currentEnemyCount++;
                     Instantiate(enemyPrefab[0], enemySpawnPoints[i].position, Quaternion.identity);
                     yield return new WaitForSeconds(spawnRate);
                 }
+                else
+                {
+                    if (currentEnemyCount >= maxEnemyCount)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        currentEnemyCount++;
+                        Instantiate(enemyPrefab[0], enemySpawnPoints[i].position, Quaternion.identity);
+                        yield return new WaitForSeconds(spawnRate);
+                    }
+                }
+
             }
             
         }

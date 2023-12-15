@@ -27,6 +27,7 @@ public class KillAllEnemiesObjective : Objective
             title = "Eliminate " + (mustKillAllEnemies ? "all the" : KillsToCompleteObjective.ToString()) +
                     " enemies";
         Enemy.OnEnemyKilled += HandleEnemyKilled;
+        ChangeEnemySpawnBehavior(randomizeEnemies, enemiesPreSpawned, continuousSpawning);
         //We would subscribe to the events in each invidual objective scripts here
         /*Enemy.OnEnemyKilled += HandleEnemyKilled; 
          * 
@@ -47,7 +48,7 @@ public class KillAllEnemiesObjective : Objective
 
     protected override void ChangeEnemySpawnBehavior(bool randomize, bool enemiesPreSpawn, bool continousSpawn)
     {
-        base.ChangeEnemySpawnBehavior(randomizeEnemies, enemiesPreSpawned, continuousSpawning);
+        base.ChangeEnemySpawnBehavior(randomize, enemiesPreSpawn, continousSpawn);
 
 
     }

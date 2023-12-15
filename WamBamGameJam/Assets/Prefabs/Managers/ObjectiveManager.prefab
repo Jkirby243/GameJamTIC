@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1231258469914589904
+--- !u!1 &6861682847980374985
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,51 +8,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7123752645325937936}
-  - component: {fileID: 552703250547738418}
+  - component: {fileID: 6861682847980375031}
+  - component: {fileID: 6861682847980375030}
   m_Layer: 0
-  m_Name: CollectObjective
+  m_Name: ObjectiveManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7123752645325937936
+--- !u!4 &6861682847980375031
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1231258469914589904}
+  m_GameObject: {fileID: 6861682847980374985}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.4999936, y: 3.7283201, z: 97.28137}
+  m_LocalPosition: {x: 9.5732, y: -2.0216274, z: 14.355934}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &552703250547738418
+--- !u!114 &6861682847980375030
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1231258469914589904}
+  m_GameObject: {fileID: 6861682847980374985}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a95098712e76d64bac9b9996829eabe, type: 3}
+  m_Script: {fileID: 11500000, guid: e542bfaea1e8e224c8c67f8c9d6ccd22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Collect All Item
-  description: Pick up all the items in the level while avoiding enemies
-  isOptional: 0
-  delayVisible: 0
-  titleText: {fileID: 0}
-  descriptionText: {fileID: 0}
-  collectiblesToCompleteObjective: 3
-  nameOfCollectibles: Coins
-  collectiblePrefab: {fileID: 2824523500335963716, guid: 912831441d2264c49871541f29102996, type: 3}
-  randomizeEnemies: 1
-  enemiesPreSpawned: 1
-  continuousSpawning: 1
+  Objectives:
+  - {fileID: 6948211207465363204, guid: 14ca7c8cd2e328b4496687bb90000651, type: 3}
+  - {fileID: 1231258469914589904, guid: 727963b87565b44439379f07e5078f5c, type: 3}
+  - {fileID: 7501126988495546868, guid: d2fa6d068a89dc9489d041a42bee55bd, type: 3}
+  activeObjective: {fileID: 0}
+  objectiveTitleText: {fileID: 0}
+  objectiveDescriptionText: {fileID: 0}

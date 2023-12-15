@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class LevelManager : MonoBehaviour
@@ -14,7 +15,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] GameObject enemySpawnerManager;
     [SerializeField] GameObject countDownText; 
     [SerializeField] int countDown = 3;
-    [SerializeField] private ObjectiveManager objectiveM; 
+    [SerializeField] private ObjectiveManager objectiveM;
+    [SerializeField] GameObject deathUI; 
 
     // Start is called before the first frame update
     void Start()
@@ -22,13 +24,17 @@ public class LevelManager : MonoBehaviour
         player.transform.position = subwayTransform.position;
         player.transform.rotation = Quaternion.identity;
         StartCoroutine(Fade("In", "subway")); //this should be moved to the level manager
+        PlayerHealth.OnPlayerDeath += HandlePlayerDeath;
+        Cursor.visible = false;
+        fadeImage.SetActive(true);
         //objectiveM.CreateNewObjective();
-    }
+    } 
 
-    // Update is called once per frame
-    void Update()
+    public void HandlePlayerDeath()
     {
-        
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+        deathUI.SetActive(true);
     }
 
     public void StartFadeCoroutine(string value, string area)
@@ -108,7 +114,13 @@ public class LevelManager : MonoBehaviour
         {
             enemySpawnerManager.SetActive(false);
             player.transform.position = subwayTransform.position;
+            player.GetComponent<PlayerHealth>().heal(10);
             StartCoroutine(Fade("In", "subway"));
         }
+    }
+
+    public void OnMainMButtonClicked(string levelName)
+    {
+        SceneManager.LoadScene(levelName);
     }
 }

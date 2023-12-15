@@ -30,6 +30,7 @@ public class CollectObjective : Objective
         {
             Instantiate(collectiblePrefab, temp[i].transform.position, Quaternion.identity);
         }
+        ChangeEnemySpawnBehavior(randomizeEnemies, enemiesPreSpawned, continuousSpawning);
         //for(int i = 0; i < collectibleSpawnPoints)
     }
 
@@ -45,8 +46,6 @@ public class CollectObjective : Objective
 
     protected override void ChangeEnemySpawnBehavior(bool randomize, bool enemiesPreSpawn, bool continousSpawn)
     {
-        base.ChangeEnemySpawnBehavior(randomizeEnemies, enemiesPreSpawned, continuousSpawning);
-
-
+        base.ChangeEnemySpawnBehavior(randomize, enemiesPreSpawn, continousSpawn);
     }
 }
