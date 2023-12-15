@@ -877,6 +877,7 @@ MonoBehaviour:
   Guns:
   - {fileID: 11400000, guid: 43b7d73c1678cc143bc4b561db606406, type: 2}
   - {fileID: 11400000, guid: 17c5bc11566469e488a75409cdd7e1f8, type: 2}
+  - {fileID: 11400000, guid: bd7d617daebea23439bc483ebd7a493b, type: 2}
   PartPos: {fileID: 5134129842518471891}
   ActiveGun: {fileID: 0}
 --- !u!114 &5134129841408854770

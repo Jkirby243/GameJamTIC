@@ -79,9 +79,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab:
-  - {fileID: 5554876520451830659, guid: 36c92e4f40eecb9479912ad2d28f770a, type: 3}
-  - {fileID: 621241895159957979, guid: 2c4e9e7a96457f047928d8db4aa9fe64, type: 3}
-  - {fileID: 3497240218652420224, guid: e4de7a231e1d35f44a380eebfbff24fc, type: 3}
+  - {fileID: 9124417817677457449, guid: 441f45d1c24a5ba469f3d0353d3f12d2, type: 3}
+  - {fileID: 6230317239467479255, guid: aef9f83d0421bb440b2fb03a2f409e61, type: 3}
   levelStartWaitTime: 5
   spawnRate: 5
   maxEnemyCount: 12

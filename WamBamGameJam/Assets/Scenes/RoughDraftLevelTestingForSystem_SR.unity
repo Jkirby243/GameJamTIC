@@ -12622,7 +12622,7 @@ PrefabInstance:
     - target: {fileID: 5134129841408854775, guid: 3fee240b519897e43b0b39f399e3a04d, type: 3}
       propertyPath: Guns.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: 17c5bc11566469e488a75409cdd7e1f8, type: 2}
+      objectReference: {fileID: 11400000, guid: bd7d617daebea23439bc483ebd7a493b, type: 2}
     - target: {fileID: 5134129841408854783, guid: 3fee240b519897e43b0b39f399e3a04d, type: 3}
       propertyPath: m_Name
       value: Player
@@ -22842,7 +22842,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2107296926416753923, guid: a536b8a2af374264e900a2cc5bd7da91, type: 3}
       propertyPath: enemyPrefab.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2107296926416753923, guid: a536b8a2af374264e900a2cc5bd7da91, type: 3}
       propertyPath: enemyPrefab.Array.data[0]
