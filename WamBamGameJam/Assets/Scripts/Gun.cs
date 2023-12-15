@@ -14,9 +14,10 @@ public class Gun : ScriptableObject
     public GameObject ModelPrefab;
     public int reloadCount;
     public int damage;
-    public BulletEffects BulletEffects;
+    public GameObject BulletEffects;
     private Transform PartPos;
 
+    public float range;
     public float Fireingspeed;
     public Vector3 Spread;
     private int ammocount;
@@ -26,11 +27,18 @@ public class Gun : ScriptableObject
     private MonoBehaviour ActiveMono;
     private ObjectPool<TrailRenderer> objectPool;
     private SpecialMoves SM;
-    public RectTransform Reticle;
 
 
     public void Spawn(Transform Parent, Transform Patpos, MonoBehaviour ActiveMono)
     {
+        if(Name == Weapon.Sword)
+        {
+            range = 1;
+        }
+        else
+        {
+            range = float.MaxValue;
+        }
         this.ActiveMono = ActiveMono;
         lastShot = 0;
         //objectPool = new ObjectPool<TrailRenderer>(CreateTrail);
@@ -42,10 +50,6 @@ public class Gun : ScriptableObject
         Model.transform.localRotation = Quaternion.Euler(SpawnRotation);
         hitdamage = damage;
         SM = GameObject.Find("Player").GetComponent<SpecialMoves>();
-        if(Name == Weapon.Pistol)
-        {
-            Reticle = FindObjectOfType<RectTransform>();
-        }
     }
 
     //private IEnumerator PlayTrail(Vector3 Start, Vector3 end, RaycastHit Hit)
@@ -100,9 +104,12 @@ public class Gun : ScriptableObject
             Vector3 accuracy = Camera.main.transform.forward +
                     new Vector3(Random.Range(-Spread.x, Spread.x), Random.Range(-Spread.y, Spread.y), Random.Range(-Spread.z, Spread.z));
             accuracy.Normalize();
+            GameObject Bulltet = Instantiate(BulletEffects, Model.transform.position, Quaternion.LookRotation(accuracy));
+            
             Debug.DrawRay(Camera.main.transform.position, accuracy, Color.red, 5);
-            if(Physics.Raycast(Camera.main.transform.position, accuracy, out RaycastHit hit, 100)) //Replace 0 with a layer mask
+            if(Physics.Raycast(Camera.main.transform.position, accuracy, out RaycastHit hit, range)) //Replace 0 with a layer mask
             {
+                Bulltet.GetComponent<PlayerBullet>().setkillpos(hit.point);
                 Debug.Log("HIT " + hit.transform.name);
                 //ActiveMono.StartCoroutine(PlayTrail(Camera.main.transform.forward, hit.point, hit));
                 //Future code to make but ensuring it is there
