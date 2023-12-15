@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "Weapon Config", menuName = "Guns/Gun", order = 0)]
 public class Gun : ScriptableObject
@@ -13,9 +14,10 @@ public class Gun : ScriptableObject
     public GameObject ModelPrefab;
     public int reloadCount;
     public int damage;
-    public BulletEffects BulletEffects;
+    public GameObject BulletEffects;
     private Transform PartPos;
 
+    public float range;
     public float Fireingspeed;
     public Vector3 Spread;
     private int ammocount;
@@ -24,10 +26,19 @@ public class Gun : ScriptableObject
     private GameObject Model;
     private MonoBehaviour ActiveMono;
     private ObjectPool<TrailRenderer> objectPool;
+    private SpecialMoves SM;
 
 
     public void Spawn(Transform Parent, Transform Patpos, MonoBehaviour ActiveMono)
     {
+        if(Name == Weapon.Sword)
+        {
+            range = 1;
+        }
+        else
+        {
+            range = float.MaxValue;
+        }
         this.ActiveMono = ActiveMono;
         lastShot = 0;
         //objectPool = new ObjectPool<TrailRenderer>(CreateTrail);
@@ -38,6 +49,7 @@ public class Gun : ScriptableObject
         Model.transform.position = Patpos.position;
         Model.transform.localRotation = Quaternion.Euler(SpawnRotation);
         hitdamage = damage;
+        SM = GameObject.Find("Player").GetComponent<SpecialMoves>();
     }
 
     //private IEnumerator PlayTrail(Vector3 Start, Vector3 end, RaycastHit Hit)
@@ -92,9 +104,12 @@ public class Gun : ScriptableObject
             Vector3 accuracy = Camera.main.transform.forward +
                     new Vector3(Random.Range(-Spread.x, Spread.x), Random.Range(-Spread.y, Spread.y), Random.Range(-Spread.z, Spread.z));
             accuracy.Normalize();
+            GameObject Bulltet = Instantiate(BulletEffects, Model.transform.position, Quaternion.LookRotation(accuracy));
+            
             Debug.DrawRay(Camera.main.transform.position, accuracy, Color.red, 5);
-            if(Physics.Raycast(Camera.main.transform.position, accuracy, out RaycastHit hit, 100)) //Replace 0 with a layer mask
+            if(Physics.Raycast(Camera.main.transform.position, accuracy, out RaycastHit hit, range)) //Replace 0 with a layer mask
             {
+                Bulltet.GetComponent<PlayerBullet>().setkillpos(hit.point);
                 Debug.Log("HIT " + hit.transform.name);
                 //ActiveMono.StartCoroutine(PlayTrail(Camera.main.transform.forward, hit.point, hit));
                 //Future code to make but ensuring it is there
@@ -102,6 +117,12 @@ public class Gun : ScriptableObject
                 {
                     Debug.Log("Enemy Shot!");
                     hit.collider.gameObject.GetComponent<EnemyHealth>().DealDamage(hitdamage, hit.point);
+                }
+                if(hit.transform.tag == "Head")
+                {
+                    Debug.Log("HEADSHOT! hitdamage =" + hitdamage + " ppoint = " + hit.transform.position);
+                    SM.AddHeadshot();
+                    hit.collider.gameObject.GetComponentInParent<EnemyHealth>().HeadShot(hitdamage, hit.point);
                 }
             }
             else
