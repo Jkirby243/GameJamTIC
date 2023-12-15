@@ -6,6 +6,7 @@ public class BadBullet : MonoBehaviour
 {
     public float bulletspeed;
     private Rigidbody rb;
+    public int damage;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +23,7 @@ public class BadBullet : MonoBehaviour
     {
         if (collision.transform.tag == "Player")
         {
-            //Deal Damage
+            collision.gameObject.GetComponent<PlayerHealth>().DealDamage(damage);
         }
         //Do other decals and stuff
         //Make either pop or other shit

@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Revolver
   m_EditorClassIdentifier: 
   Name: 1
-  Maxammo: 0
+  Maxammo: 100
   SpawnPoint: {x: 0, y: 0, z: 0}
   SpawnRotation: {x: 0, y: 0, z: 0}
   ModelPrefab: {fileID: 5248292506004001506, guid: 10a375ecf720bb8448ec9d19a4fd6741, type: 3}
-  reloadCount: 0
-  damage: 0
+  reloadCount: 1
+  damage: 10
   BulletEffects: {fileID: 0}
-  Fireingspeed: 0
+  Fireingspeed: 0.5
   Spread: {x: 0, y: 0, z: 0}
