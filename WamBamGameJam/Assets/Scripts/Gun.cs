@@ -104,12 +104,25 @@ public class Gun : ScriptableObject
             Vector3 accuracy = Camera.main.transform.forward +
                     new Vector3(Random.Range(-Spread.x, Spread.x), Random.Range(-Spread.y, Spread.y), Random.Range(-Spread.z, Spread.z));
             accuracy.Normalize();
-            GameObject Bulltet = Instantiate(BulletEffects, Model.transform.position, Quaternion.LookRotation(accuracy));
+            GameObject Bulltet; 
+            try
+            {
+                Bulltet = Instantiate(BulletEffects, Model.transform.position, Quaternion.LookRotation(accuracy));
+            }
+            catch
+            {
+                 Bulltet = null; 
+            }
+            
             
             Debug.DrawRay(Camera.main.transform.position, accuracy, Color.red, 5);
+
             if(Physics.Raycast(Camera.main.transform.position, accuracy, out RaycastHit hit, range)) //Replace 0 with a layer mask
             {
-                Bulltet.GetComponent<PlayerBullet>().setkillpos(hit.point);
+                if(Bulltet != null)
+                {
+                    Bulltet.GetComponent<PlayerBullet>().setkillpos(hit.point);
+                }
                 //Debug.Log("HIT " + hit.transform.name);
                 //ActiveMono.StartCoroutine(PlayTrail(Camera.main.transform.forward, hit.point, hit));
                 //Future code to make but ensuring it is there
