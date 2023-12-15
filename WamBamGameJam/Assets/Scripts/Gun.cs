@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "Weapon Config", menuName = "Guns/Gun", order = 0)]
 public class Gun : ScriptableObject
@@ -24,6 +25,8 @@ public class Gun : ScriptableObject
     private GameObject Model;
     private MonoBehaviour ActiveMono;
     private ObjectPool<TrailRenderer> objectPool;
+    private SpecialMoves SM;
+    public RectTransform Reticle;
 
 
     public void Spawn(Transform Parent, Transform Patpos, MonoBehaviour ActiveMono)
@@ -38,6 +41,11 @@ public class Gun : ScriptableObject
         Model.transform.position = Patpos.position;
         Model.transform.localRotation = Quaternion.Euler(SpawnRotation);
         hitdamage = damage;
+        SM = GameObject.Find("Player").GetComponent<SpecialMoves>();
+        if(Name == Weapon.Pistol)
+        {
+            Reticle = FindObjectOfType<RectTransform>();
+        }
     }
 
     //private IEnumerator PlayTrail(Vector3 Start, Vector3 end, RaycastHit Hit)
@@ -105,8 +113,8 @@ public class Gun : ScriptableObject
                 }
                 if(hit.transform.tag == "Head")
                 {
-                    Debug.Log("HEADSHOT! hitdamage =" + hitdamage + " ppoint = " + hit.point);
-
+                    Debug.Log("HEADSHOT! hitdamage =" + hitdamage + " ppoint = " + hit.transform.position);
+                    SM.AddHeadshot();
                     hit.collider.gameObject.GetComponentInParent<EnemyHealth>().HeadShot(hitdamage, hit.point);
                 }
             }
