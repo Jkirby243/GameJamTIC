@@ -31,7 +31,8 @@ public class PlayerMovement : MonoBehaviour
     float turnboundsL;
 
     [SerializeField]
-    private DebugWeaponselect DWS;
+    private WeaponsManager weaponsManager;
+
 
     private SpecialMoves SM;
 
@@ -71,9 +72,10 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = -3f;
         }
 
-        if (Input.GetButton("Fire1") && DWS.ActiveGun != null)
+        if (Input.GetButton("Fire1") && weaponsManager.ActiveGun != null)
         {
-            DWS.ActiveGun.Fire();
+            //print("Fire button has been hit AND there is an activeGun");
+            weaponsManager.ActiveGun.Fire();
         }
 
         //Basic Camera stuff

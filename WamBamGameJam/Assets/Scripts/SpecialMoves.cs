@@ -63,7 +63,7 @@ public class SpecialMoves : MonoBehaviour
                     Debug.Log(kill);
                     foreach (GameObject e in kill)
                     {
-                        EnemyHealth tmp = e.GetComponent<EnemyHealth>();
+                        Enemy tmp = e.GetComponent<Enemy>();
                         tmp.DealDamage(tmp.health, tmp.transform.position);
                     }
                 }

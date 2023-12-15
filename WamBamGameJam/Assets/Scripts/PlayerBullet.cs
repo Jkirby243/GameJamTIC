@@ -47,7 +47,7 @@ public class PlayerBullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Bullet hit: " + other.name);
+        //Debug.Log("Bullet hit: " + other.name);
         if (other.tag != "Player" && other.tag != "MainCamera")
         {
             kill = true;

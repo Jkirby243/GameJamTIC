@@ -110,19 +110,19 @@ public class Gun : ScriptableObject
             if(Physics.Raycast(Camera.main.transform.position, accuracy, out RaycastHit hit, range)) //Replace 0 with a layer mask
             {
                 Bulltet.GetComponent<PlayerBullet>().setkillpos(hit.point);
-                Debug.Log("HIT " + hit.transform.name);
+                //Debug.Log("HIT " + hit.transform.name);
                 //ActiveMono.StartCoroutine(PlayTrail(Camera.main.transform.forward, hit.point, hit));
                 //Future code to make but ensuring it is there
                 if(hit.transform.tag == "Enemy")
                 {
                     Debug.Log("Enemy Shot!");
-                    hit.collider.gameObject.GetComponent<EnemyHealth>().DealDamage(hitdamage, hit.point);
+                    hit.collider.gameObject.GetComponent<Enemy>().DealDamage(hitdamage, hit.point);
                 }
                 if(hit.transform.tag == "Head")
                 {
                     Debug.Log("HEADSHOT! hitdamage =" + hitdamage + " ppoint = " + hit.transform.position);
                     SM.AddHeadshot();
-                    hit.collider.gameObject.GetComponentInParent<EnemyHealth>().HeadShot(hitdamage, hit.point);
+                    hit.collider.gameObject.GetComponentInParent<Enemy>().HeadShot(hitdamage, hit.point);
                 }
             }
             else

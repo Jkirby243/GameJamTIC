@@ -63,16 +63,13 @@ public class WeaponsManager : MonoBehaviour
             else if(inTweakerdTriggerZone && !inSenatorTriggerZone && !inCowboyTriggerZone)
             {
 
-                Debug.Log("Selected Tweaker Weapon: TWEAKER NOT CURRENTLY IMPLEMENTED");
-
-                //if (ActiveGun != null)
-                //{
-                //    ActiveGun.Despawn();
-                //    DestroyImmediate(ActiveGun, true);
-                //}
-                //Gun gun = Guns.Find(gun => gun.Name == Weapon.Revolver);
-                //ActiveGun = gun;
-                //gun.Spawn(WeaponParent, PartPos, this);
+                if(ActiveGun != null)
+                {
+                    ActiveGun.Despawn();
+                }
+                Gun gun = Guns.Find(gun => gun.Name == Weapon.Sword);
+                ActiveGun = gun;
+                gun.Spawn(WeaponParent, PartPos, this);
             }
         }
     }

@@ -17,6 +17,11 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] private float spawnRate = 1f;
 
+    [SerializeField] private int maxEnemyCount = 6;
+
+    [HideInInspector]
+    public int currentEnemyCount = 0; 
+
     [Space]
 
     [Header("Type of Spawning")]
@@ -43,7 +48,7 @@ public class EnemySpawner : MonoBehaviour
         canSpawn = false;
         spawnTimer = levelStartWaitTime;
         enemySpawnPoints = new Transform[transform.childCount];
-
+        currentEnemyCount = 0; 
         int children = transform.childCount;
         enemySpawnPoints = new Transform[children];
         for(int i = 0; i < children; i++)
@@ -55,17 +60,40 @@ public class EnemySpawner : MonoBehaviour
         {
             if(randomEnemy)
             {
-                for (int i = 0; i < enemySpawnPoints.Length; i++)
+                for(int j = 0; j < maxEnemyCount; j++)
                 {
-                    randomVal = Random.Range(0, enemyPrefab.Length);
-                    Instantiate(enemyPrefab[randomVal], enemySpawnPoints[i].position, Quaternion.identity);
+                    if(currentEnemyCount >= maxEnemyCount)
+                    {
+                        break; 
+                    }
+                    else
+                    {
+                        for (int i = 0; i < enemySpawnPoints.Length; i++)
+                        {
+                            currentEnemyCount++;
+                            randomVal = Random.Range(0, enemyPrefab.Length);
+                            Instantiate(enemyPrefab[randomVal], enemySpawnPoints[i].position, Quaternion.identity);
+                        }
+                    }
                 }
+
             }
             else
             {
-                for (int i = 0; i < enemySpawnPoints.Length; i++)
+                for (int j = 0; j < maxEnemyCount; j++)
                 {
-                    Instantiate(enemyPrefab[0], enemySpawnPoints[i].position, Quaternion.identity);
+                    if (currentEnemyCount >= maxEnemyCount)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        for (int i = 0; i < enemySpawnPoints.Length; i++)
+                        {
+                            currentEnemyCount++;
+                            Instantiate(enemyPrefab[0], enemySpawnPoints[i].position, Quaternion.identity);
+                        }
+                    }
                 }
             }
         }
@@ -77,6 +105,7 @@ public class EnemySpawner : MonoBehaviour
         spawnTimer -= Time.deltaTime; 
         if(spawnTimer <= 0 && continuouslySpawningEnemies)
         {
+            print("In spawnTimer <= 0 && continouslySpawningEnemies");
             StartCoroutine(Spawner());
             spawnTimer = spawnRate; 
 ;       }
@@ -89,20 +118,67 @@ public class EnemySpawner : MonoBehaviour
             
             for(int i = 0; i < enemySpawnPoints.Length; i++)
             {
-                randomVal = Random.Range(0, enemyPrefab.Length);
-                Instantiate(enemyPrefab[randomVal], enemySpawnPoints[i].position, Quaternion.identity);
+                if(continuouslySpawningEnemies)
+                {
+                    currentEnemyCount++;
+                    randomVal = Random.Range(0, enemyPrefab.Length);
+                    Instantiate(enemyPrefab[randomVal], enemySpawnPoints[i].position, Quaternion.identity);
+                    yield return new WaitForSeconds(spawnRate);
+                }
+                else
+                {
+                    if (currentEnemyCount >= maxEnemyCount)
+                    {
+                        print("Reached Max Enemy Count");
+                        break;
+                    }
+                    else
+                    {
+                        currentEnemyCount++;
+                        randomVal = Random.Range(0, enemyPrefab.Length);
+                        Instantiate(enemyPrefab[randomVal], enemySpawnPoints[i].position, Quaternion.identity);
+                        yield return new WaitForSeconds(spawnRate);
+                    }
+                }
             }
             
-            yield return new WaitForSeconds(spawnRate);
+            
         }
         else
         {
             for (int i = 0; i < enemySpawnPoints.Length; i++)
             {
-                Instantiate(enemyPrefab[0], enemySpawnPoints[i].position, Quaternion.identity);
+
+                if (continuouslySpawningEnemies)
+                {
+                    currentEnemyCount++;
+                    Instantiate(enemyPrefab[0], enemySpawnPoints[i].position, Quaternion.identity);
+                    yield return new WaitForSeconds(spawnRate);
+                }
+                else
+                {
+                    if (currentEnemyCount >= maxEnemyCount)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        currentEnemyCount++;
+                        Instantiate(enemyPrefab[0], enemySpawnPoints[i].position, Quaternion.identity);
+                        yield return new WaitForSeconds(spawnRate);
+                    }
+                }
+
             }
-            yield return new WaitForSeconds(spawnRate);
+            
         }
 
+    }
+
+    public void ChangeSpawnerBehavior(bool randomize, bool enemiesPreSpawn, bool continousSpawn)
+    {
+        randomEnemy = randomize;
+        enemiesInstantiated = enemiesPreSpawn;
+        continuouslySpawningEnemies = continousSpawn;
     }
 }
