@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainMenuDraft_SR.unity
+    guid: fa44615e859ecdb4eb6355ec35c2ff75
+  - enabled: 1
+    path: Assets/Scenes/RoughDraftLevelTestingForSystem_SR.unity
+    guid: 6a1e9f8faad71d84ab60da0caae513ee
   m_configObjects: {}

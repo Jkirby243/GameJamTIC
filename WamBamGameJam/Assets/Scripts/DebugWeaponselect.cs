@@ -7,16 +7,16 @@ public class DebugWeaponselect : MonoBehaviour
 {
 
     [SerializeField]
-    private Weapon Weaponname;
+    private Weapon Weaponname; //name of the weapon, each gun has a weapon name assigned to it
     [SerializeField]
     private Transform WeaponParent;
     [SerializeField]
-    private List<Gun> Guns;
+    private List<Gun> Guns; //weapon scripts
     [SerializeField]
     private Transform PartPos;
 
     [Space]
-    public Gun ActiveGun;
+    public Gun ActiveGun; //actual active gun
 
     // Start is called before the first frame update
     void Start()
@@ -38,16 +38,16 @@ public class DebugWeaponselect : MonoBehaviour
     {
         if (Input.GetKeyDown("1"))
         {
-            ActiveGun.Despawn();
-            DestroyImmediate(ActiveGun, true);
-            Gun gun = Guns.Find(gun => gun.Name == Weapon.Pistol);
+            ActiveGun.Despawn(); //despawns
+            //DestroyImmediate(ActiveGun, true); //removes model everything
+            Gun gun = Guns.Find(gun => gun.Name == Weapon.Pistol); //finds a gun in the list of game that has the same as the given name
             ActiveGun = gun;
-            gun.Spawn(WeaponParent, PartPos,this);
+            gun.Spawn(WeaponParent, PartPos,this); //just model and part positions
         }
         if (Input.GetKeyDown("2"))
         {
             ActiveGun.Despawn();
-            DestroyImmediate(ActiveGun, true);
+            //DestroyImmediate(ActiveGun, true);
             Gun gun = Guns.Find(gun => gun.Name == Weapon.Revolver);
             ActiveGun = gun;
             gun.Spawn(WeaponParent, PartPos ,this);

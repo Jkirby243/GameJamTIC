@@ -1,5 +1,6 @@
 public enum Weapon
 {
     Pistol,
-    Revolver
+    Revolver,
+    Sword
 }

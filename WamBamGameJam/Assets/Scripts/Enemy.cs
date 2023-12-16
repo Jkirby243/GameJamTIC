@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using System;
 
 public class Enemy : MonoBehaviour
 {
+
+    public static event Action OnEnemyKilled;
 
     //Private EnemyHealth Health
     private NavMeshAgent Nav;
@@ -19,7 +22,11 @@ public class Enemy : MonoBehaviour
     public LayerMask mask;
     public GameObject Firepoint;
     public GameObject bullet;
+    public GameObject numbersPosition; 
     public bool melee;
+
+    public int health;
+    public GameObject DamageNumber;
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +64,7 @@ public class Enemy : MonoBehaviour
 
                     shoottimer = Time.time;
                     Instantiate(bullet, Firepoint.transform.position, transform.rotation);
+                    print("Bullet Fired");
 
                 }
             }
@@ -97,18 +105,57 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void DealDamage(int damage, Vector3 pos)
+    {
+        health -= damage;
+        GameObject numb = Instantiate(DamageNumber, pos, Quaternion.identity, numbersPosition.transform);
+        numb.GetComponentInChildren<Number>().value = damage;
+        //Debug.Log("Damage is " + damage.ToString() + " value is " + numb.GetComponent<Number>().value.ToString());
+        numb.GetComponentInChildren<Number>().text.text = damage.ToString();
+        if(health<= 0)
+        {
+            Death();
+        }
+    }
+
+    public void HeadShot(int damage, Vector3 pos)
+    {
+        //Debug.Log("deadling headshot+");
+        float headdamage = (float)damage * 2.5f;
+        health -= Mathf.RoundToInt(headdamage);
+        GameObject numb = Instantiate(DamageNumber, pos, Quaternion.identity);
+        numb.GetComponent<Number>().value = Mathf.RoundToInt(headdamage);
+        //Debug.Log("Damage is " + Mathf.RoundToInt(headdamage).ToString() + " value is " + numb.GetComponent<Number>().value.ToString());
+        numb.GetComponent<Number>().text.text = Mathf.RoundToInt(headdamage).ToString();
+    }
+
+    public void Death()
+    {
+        if(OnEnemyKilled!= null)
+        {
+            OnEnemyKilled.Invoke();
+            Destroy(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        //print("Enemy Died!");
+        //Add animations here along with sound effects for death sequence
+    }
+
     IEnumerator wait()
     {
-        Debug.Log("Call wait");
+        //Debug.Log("Call wait");
         yield return new WaitForSeconds(1);
 
-        Debug.Log(Vector3.Distance(transform.position, Player.transform.position));
+        //Debug.Log(Vector3.Distance(transform.position, Player.transform.position));
         if (Vector3.Distance(transform.position, Player.transform.position) <= 1.5f)
         {
-            Debug.Log("DealDamage");
+            //Debug.Log("DealDamage");
             Player.GetComponent<PlayerHealth>().DealDamage(10);
         }
-        Debug.Log("done swing");
+        //Debug.Log("done swing");
         shooting = false;
     }
 
